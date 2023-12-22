@@ -1,21 +1,29 @@
 import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from 'lucide-react';
 import Button from '../components/Button';
 import { useState } from 'react';
+import { useSidebarContext } from '../contexts/sidebarContext';
 
 function PageHeader() {
   const [showFullSearch, setShowFullSearch] = useState(false);
+  const { toggle } = useSidebarContext();
+
   return (
-    <header className="flex gap-10 lg:gap-20 justify-between items-center p-4">
+    <header className="flex gap-10 lg:gap-20 justify-between items-center p-4 ">
       <div
-        className={`gap-4 items-center flex-shrink-0 ${
+        className={`gap-4 items-center flex-shrink-0  ${
           showFullSearch ? 'hidden' : 'flex'
         }`}
       >
-        <Button className="aside-switch" variant={'ghost'} size={'icon'}>
+        <Button
+          onClick={toggle}
+          className="aside-switch"
+          variant={'ghost'}
+          size={'icon'}
+        >
           <Menu />
         </Button>
-        <a href="/" className="text-primary ">
-          LOGO
+        <a href="/" className="text-primary font-bold text-lg uppercase">
+          Eyad Omar
         </a>
       </div>
       <form
